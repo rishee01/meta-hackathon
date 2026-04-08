@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Email Triage</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <h1>Email Triage</h1>
+      <p>Interactive frontend, task scoring dashboards, and LLM integration.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Control Panel</h2>
+      </div>
+      <div class="row">
+        <label for="task-select">Task Level</label>
+        <select id="task-select">
+          <option value="easy">Easy (Spam Detection)</option>
+          <option value="medium">Medium (Priority Assessment)</option>
+          <option value="hard">Hard (Reply Generation)</option>
+        </select>
+      </div>
+      <div class="row actions">
+        <button id="reset-btn">Reset Environment</button>
+        <button id="step-btn" disabled>Submit Action</button>
+      </div>
+    </section>
+
+    <section class="panel" id="observation-panel">
+      <div class="panel-header">
+        <h2>Current Email</h2>
+        <span id="task-tag">Task: easy</span>
+      </div>
+      <div class="email-box">
+        <pre id="email-content">Press Reset to load an email</pre>
+      </div>
+      <div class="email-thread" id="thread-container" hidden>
+        <strong>Thread History</strong>
+        <pre id="thread-text"></pre>
+      </div>
+      <div class="input-group">
+        <label id="input-label" for="action-input">Action</label>
+        <select id="classification-select"></select>
+        <textarea id="reply-input" rows="5" placeholder="Write your reply here..."></textarea>
+      </div>
+      <div class="feedback" id="step-feedback"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Scoring Dashboard</h2>
+      </div>
+      <div class="metrics-grid" id="metric-cards">
+        <div class="metric-card"><span>Task</span><strong id="metric-task">N/A</strong></div>
+        <div class="metric-card"><span>Steps</span><strong id="metric-steps">0</strong></div>
+        <div class="metric-card"><span>Average Score</span><strong id="metric-average">0.00</strong></div>
+        <div class="metric-card"><span>Last Score</span><strong id="metric-last">N/A</strong></div>
+      </div>
+      <div class="history-table-wrapper">
+        <table id="history-table">
+          <thead>
+            <tr><th>#</th><th>Task</th><th>Action</th><th>Score</th><th>Feedback</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Use this frontend to explore the environment and visualize scoring as a hackathon demo.</p>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

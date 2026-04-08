@@ -1,0 +1,39 @@
+name: EmailTriageAutomation
+version: 1.0.0
+description: Advanced OpenEnv environment for realistic email triage automation with spam classification, priority assessment, and professional reply generation. Features multi-threaded conversations, adversarial inputs, and dense reward shaping.
+author: AI Systems Engineer
+tasks:
+  - easy: Spam vs non-spam classification with ambiguous cases
+  - medium: Priority classification (high/medium/low) with nuance
+  - hard: Generate high-quality professional email replies with context awareness
+observation_space:
+  type: object
+  properties:
+    email_content:
+      type: string
+      description: Full email content including subject and body
+    thread_history:
+      type: array
+      items:
+        type: string
+      description: Previous messages in the email thread
+    current_task:
+      type: string
+      enum: [easy, medium, hard]
+      description: Current task level being evaluated
+action_space:
+  type: object
+  properties:
+    classification:
+      type: string
+      description: Classification for easy/medium tasks
+    reply:
+      type: string
+      description: Generated reply for hard task
+reward_range: [0.0, 1.0]
+episode_length: 15
+metadata:
+  realistic_simulation: true
+  thread_support: true
+  adversarial_inputs: true
+  dense_rewards: true
