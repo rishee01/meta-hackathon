@@ -57,6 +57,7 @@ async def reset(request: ResetRequest):
     return {"observation": obs.dict(), "metrics": session_metrics}
 
 @app.post("/step")
+    import traceback
 async def step(request: StepRequest):
     if env is None:
         raise HTTPException(status_code=400, detail="Environment not initialized. Call /reset first.")
